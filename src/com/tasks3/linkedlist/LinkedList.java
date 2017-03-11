@@ -42,16 +42,16 @@ public class LinkedList {
 
     public boolean delete(int index) {
         //PUT YOUR CODE HERE
-        if(index<size && size != 0) {
+        if(index >= 0 && index < size && size != 0) {
+            Node node = header;
             if (index == 0) {
-//                header = node.getNext();
                 header = header.getNext();
             }
             else {
-                Node node = header;
-                for (int i = 1; i < index-1; i++) {
+                for (int i = 0; i < index-1; i++) {
                     node = node.getNext();
                 }
+                node.setNext(node.getNext().getNext());
             }
             size--;
             return true;

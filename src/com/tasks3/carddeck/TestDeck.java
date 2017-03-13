@@ -5,22 +5,36 @@ package com.tasks3.carddeck;
  */
 public class TestDeck {
     static public void main(String [] argv) {
+        System.out.println("------------------------------------------------");
+        System.out.println("--- constructor ---");
         Deck desk = new Deck();
-
-        Card card;
-        while (desk.hasNext()){
-            card = desk.drawOne();
-            System.out.println(card.getSuit().getName() + " " + card.getRank().getName());
-        }
+        print(desk);
 
         System.out.println("------------------------------------------------");
+        System.out.println("--- shuffle ---");
         desk = new Deck();
-        System.out.println("has next - " + desk.hasNext());
+        desk.shuffle();
+        print(desk);
+
+        System.out.println("------------------------------------------------");
+        System.out.println("--- order ---");
+        desk = new Deck();
+        desk.shuffle();
         desk.order();
-        System.out.println("has next - " + desk.hasNext());
-        while (desk.hasNext()){
-            card = desk.drawOne();
-            System.out.println(card.getSuit().getName() + " " + card.getRank().getName());
+        print(desk);
+
+//        Card card = new Card(new Rank("Ace"),new Suit("HEARTS"));
+
+
+    }
+
+    static private void print(Deck d){
+        Card card;
+        int i = 0;
+        while (d.hasNext()){
+            card = d.drawOne();
+            System.out.println(i + " " + card.getSuit().getName() + " " + card.getRank().getName());
+            i++;
         }
     }
 }

@@ -9,6 +9,9 @@ public class ApplicationTest {
     public void parse() throws Exception {
         assertEquals(2100,Application.parse("10 20 + 30 40 + *"),0.001);
         assertEquals(610,Application.parse("10 20 30.0 * +"), 0.001);
+        assertEquals(0,Application.parse("2 -2 +"), 0.001);
+        assertEquals(10,Application.parse("10 20 -"), 0.001);
+        assertEquals(2,Application.parse("10 20 /"), 0.001);
     }
 
     @Test(expected=RPNParserException.class)
